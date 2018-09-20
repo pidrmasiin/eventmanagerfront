@@ -26,13 +26,14 @@ class NewEvent extends React.Component {
     this.handleStartTimeChange = this.handleStartTimeChange.bind(this);
   }
 
-    onSubmit = () => {
+    onSubmit = async () => {
       const accept = `Add event:${this.state.name
       }\ndetails:${this.state.details
       }\nstarts:${this.state.startTime.toString()
       }\nends:${this.state.endTime.toString()}`
       if (window.confirm(accept)) {
-        eventService.addEvent(this.state)
+        await eventService.addEvent(this.state)
+        window.location.assign('/')
       }
     }
 
